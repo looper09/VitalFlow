@@ -4,36 +4,49 @@ from database import get_db_connection
 # SUPER-AUDITOR HELPER FUNCTION
 # ==========================================
 def execute_query(query, params=(), staff_id="System", table_affected="Unknown"):
-    import sqlite3
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cur = conn.cursor()
     
-    # 1. Execute the main operation
-    cursor.execute(query, params)
+    # PostgreSQL uses %s, SQLite uses ?
+    # This automatically converts the syntax so it works in both places
+    if hasattr(conn, 'get_dsn_parameters'): # Checks if it's PostgreSQL
+        query = query.replace('?', '%s')
+        
+    cur.execute(query, params)
     
-    # 2. Automatically Log the Action using local time
-    action_type = query.strip().split(' ')[0].upper() # Extracts INSERT, UPDATE, or DELETE
-    log_query = """
-        INSERT INTO Audit_Logs (Staff_ID, Action, Table_Affected, Timestamp) 
-        VALUES (?, ?, ?, datetime('now', 'localtime'))
-    """
-    cursor.execute(log_query, (str(staff_id), f"{action_type}: {query[:50]}...", table_affected))
+    # Audit Log Logic
+    action_type = query.strip().split(' ')[0].upper()
+    log_query = "INSERT INTO audit_logs (staff_id, action, table_affected) VALUES (?, ?, ?)"
+    if hasattr(conn, 'get_dsn_parameters'):
+        log_query = log_query.replace('?', '%s')
+    
+    cur.execute(log_query, (str(staff_id), f"{action_type}: {query[:50]}...", table_affected))
     
     conn.commit()
+    cur.close()
     conn.close()
 
 def fetch_all(query, params=()):
     conn = get_db_connection()
-    results = conn.execute(query, params).fetchall()
+    cur = conn.cursor()
+    if hasattr(conn, 'get_dsn_parameters'):
+        query = query.replace('?', '%s')
+    cur.execute(query, params)
+    results = cur.fetchall()
+    cur.close()
     conn.close()
     return results
 
 def fetch_one(query, params=()):
     conn = get_db_connection()
-    result = conn.execute(query, params).fetchone()
+    cur = conn.cursor()
+    if hasattr(conn, 'get_dsn_parameters'):
+        query = query.replace('?', '%s')
+    cur.execute(query, params)
+    result = cur.fetchone()
+    cur.close()
     conn.close()
     return result
-
 # ==========================================
 # 1. HOSPITALS
 # ==========================================
