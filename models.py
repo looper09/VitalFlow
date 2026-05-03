@@ -7,17 +7,19 @@ def execute_query(query, params=(), staff_id="System", table_affected="Unknown")
     conn = get_db_connection()
     cur = conn.cursor()
     
-    # PostgreSQL uses %s, SQLite uses ?
-    # This automatically converts the syntax so it works in both places
-    if hasattr(conn, 'get_dsn_parameters'): # Checks if it's PostgreSQL
+    # Check if we are using PostgreSQL (Supabase) or SQLite (Local)
+    is_postgres = hasattr(conn, 'get_dsn_parameters')
+    
+    # 🚨 Syntax Translation: PostgreSQL uses %s, SQLite uses ?
+    if is_postgres:
         query = query.replace('?', '%s')
         
     cur.execute(query, params)
     
-    # Audit Log Logic
+    # Audit Log Automation
     action_type = query.strip().split(' ')[0].upper()
     log_query = "INSERT INTO audit_logs (staff_id, action, table_affected) VALUES (?, ?, ?)"
-    if hasattr(conn, 'get_dsn_parameters'):
+    if is_postgres:
         log_query = log_query.replace('?', '%s')
     
     cur.execute(log_query, (str(staff_id), f"{action_type}: {query[:50]}...", table_affected))
@@ -47,6 +49,7 @@ def fetch_one(query, params=()):
     cur.close()
     conn.close()
     return result
+
 # ==========================================
 # 1. HOSPITALS
 # ==========================================
