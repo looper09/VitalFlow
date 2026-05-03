@@ -3,7 +3,7 @@ import psycopg2
 import streamlit as st
 import os
 
-def get_connection():
+def get_db_connection():
     """
     Returns a connection to either the Supabase PostgreSQL database
     (if running on Streamlit Cloud) or the local SQLite database 
@@ -34,7 +34,7 @@ def get_connection():
 
 # Quick test if you run this file directly
 if __name__ == '__main__':
-    conn = get_connection()
+    conn = get_db_connection()
     if conn:
         print("Database connection successful!")
         conn.close()
