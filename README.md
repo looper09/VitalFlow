@@ -45,7 +45,7 @@ python setup.py
 ```
 
 ### 3. Seed the Network Data
-Populate the database with realistic medical records (Twin Cities Edition: Islamabad & Rawalpindi):
+Populate the database with realistic medical records:
 
 ```bash
 python seed.py
