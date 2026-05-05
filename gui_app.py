@@ -62,7 +62,7 @@ def render_crud_tabs(tab_read, tab_create, tab_manage, item_label, columns, get_
         data = get_func()
         if data:
             df = pd.DataFrame(data, columns=columns)
-            st.dataframe(df, use_container_width=True, hide_index=True)
+            st.dataframe(df, width="stretch", hide_index=True)
         else:
             st.info(f"No {item_label}s found in the database.")
             
@@ -126,7 +126,7 @@ if not st.session_state.logged_in:
         with st.form("login_form"):
             username_input = st.text_input("Username")
             password_input = st.text_input("Password", type="password")
-            if st.form_submit_button("Authenticate Access", use_container_width=True):
+            if st.form_submit_button("Authenticate Access", width="stretch"):
                 user_record = models.get_staff_by_username(username_input)
                 if user_record and str(user_record[2]) == password_input:  
                     st.session_state.logged_in = True
@@ -167,7 +167,7 @@ else:
     choice = st.sidebar.radio("Navigation", menu)
     
     st.sidebar.markdown("---")
-    if st.sidebar.button("Log Out", type="primary", use_container_width=True):
+    if st.sidebar.button("Log Out", type="primary", width="stretch"):
         st.session_state.logged_in = False
         st.session_state.username = ""
         st.session_state.role_id = None
@@ -222,7 +222,7 @@ else:
         if data: 
             df_logs = pd.DataFrame(data, columns=['Status ID', 'Origin', 'Destination', 'Supply', 'Qty', 'Status', 'Timestamp'])
             # height=400 creates the sliding/scrollable box for massive data
-            st.dataframe(df_logs, use_container_width=True, hide_index=True, height=400)
+            st.dataframe(df_logs, width="stretch", hide_index=True, height=400)
         else:
             st.info("No active logistics found.")
 
@@ -278,7 +278,7 @@ else:
                         # Map item IDs back to names for the display table
                         i_map = {i[0]: i[1] for i in items} if items else {}
                         formatted_stock = [(s[0], s[1], f"{s[2]} - {i_map.get(s[2], 'Unknown')}", s[3], s[4]) for s in stock]
-                        st.dataframe(pd.DataFrame(formatted_stock, columns=['Inventory_ID (Barcode)', 'Hospital_ID', 'Item', 'Quantity', 'Expiry']), use_container_width=True, hide_index=True)
+                        st.dataframe(pd.DataFrame(formatted_stock, columns=['Inventory_ID (Barcode)', 'Hospital_ID', 'Item', 'Quantity', 'Expiry']), width="stretch", hide_index=True)
                     else:
                         st.info("No stock found for this facility.")
                     
@@ -422,7 +422,7 @@ else:
                 formatted_data = [(
                     r[0], h_map.get(r[1], 'Unknown'), h_map.get(r[2], 'Unknown'), i_map.get(r[3], 'Unknown'), r[4]
                 ) for r in reqs]
-                st.dataframe(pd.DataFrame(formatted_data, columns=['Req_ID', 'Origin_Hospital', 'Dest_Hospital', 'Item', 'Qty']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(formatted_data, columns=['Req_ID', 'Origin_Hospital', 'Dest_Hospital', 'Item', 'Qty']), width="stretch", hide_index=True)
             else:
                 st.info("No active transfer requests found.")
                 
@@ -515,7 +515,7 @@ else:
                 logs = models.get_all_logs()
                 if logs:
                     try:
-                        st.dataframe(pd.DataFrame(logs, columns=['Log_ID', 'Staff_ID', 'Action', 'Table_Affected', 'Timestamp']), use_container_width=True, hide_index=True)
+                        st.dataframe(pd.DataFrame(logs, columns=['Log_ID', 'Staff_ID', 'Action', 'Table_Affected', 'Timestamp']), width="stretch", hide_index=True)
                     except ValueError:
                         st.dataframe(pd.DataFrame(logs))
                 else:
@@ -609,7 +609,7 @@ else:
             st.subheader("Staff Directory (Staff + Roles + Hospitals)")
             data = models.get_staff_report()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['ID', 'Username', 'System Role', 'Assigned Facility']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['ID', 'Username', 'System Role', 'Assigned Facility']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
                 
@@ -617,7 +617,7 @@ else:
             st.subheader("Comprehensive Inventory (Stock + Facilities + Catalog)")
             data = models.get_inventory_report()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['Barcode', 'Facility', 'Item', 'Category', 'Qty', 'Expiry']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['Barcode', 'Facility', 'Item', 'Category', 'Qty', 'Expiry']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
                 
@@ -625,7 +625,7 @@ else:
             st.subheader("Blood Drive Metrics (Donations + Donors + Hospitals)")
             data = models.get_donation_report()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['Log ID', 'Donor Name', 'Blood Type', 'Receiving Facility', 'Date', 'Volume (ml)']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['Log ID', 'Donor Name', 'Blood Type', 'Receiving Facility', 'Date', 'Volume (ml)']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
                 
@@ -634,7 +634,7 @@ else:
             st.caption("Features to track the exact movement of supplies.")
             data = models.get_full_transfer_history()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['Log ID', 'Origin', 'Destination', 'Supply', 'Qty', 'Status', 'Timestamp']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['Log ID', 'Origin', 'Destination', 'Supply', 'Qty', 'Status', 'Timestamp']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
                 
@@ -643,7 +643,7 @@ else:
             st.caption("User tracking table to actual system roles for maximum security visibility.")
             data = models.get_deep_audit_report()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['Log ID', 'Timestamp', 'Username', 'System Role', 'Action Taken', 'Database Table']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['Log ID', 'Timestamp', 'Username', 'System Role', 'Action Taken', 'Database Table']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
                 
@@ -654,7 +654,7 @@ else:
             st.caption("Calculates total blood volume available at each facility by grouping donors and records.")
             data = models.get_blood_bank_summary()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['Hospital', 'Blood Type', 'Total Donors', 'Total Volume (ml)']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['Hospital', 'Blood Type', 'Total Donors', 'Total Volume (ml)']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
 
@@ -663,6 +663,6 @@ else:
             st.caption("Shows total items successfully exported by grouping delivered shipments and categories.")
             data = models.get_logistics_impact()
             if data:
-                st.dataframe(pd.DataFrame(data, columns=['Supplying Hospital', 'Item Category', 'Items Delivered', 'Shipment Count']), use_container_width=True, hide_index=True)
+                st.dataframe(pd.DataFrame(data, columns=['Supplying Hospital', 'Item Category', 'Items Delivered', 'Shipment Count']), width="stretch", hide_index=True)
             else:
                 st.info("No data available.")
