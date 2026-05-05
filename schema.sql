@@ -1,4 +1,4 @@
--- ==========================================
+"-- ==========================================
 -- VITALFLOW: MASTER DATABASE SCHEMA
 -- ==========================================
 
@@ -109,4 +109,4 @@ CREATE INDEX IF NOT EXISTS idx_transfer_status ON Transfer_Status(Status);
 
 -- Speeds up Hospital Inventory lookups & Blood Bank Summaries
 CREATE INDEX IF NOT EXISTS idx_hosp_inventory ON Hospital_Inventory(Hospital_ID, Item_ID);
-CREATE INDEX IF NOT EXISTS idx_donation_hosp ON Donation_Records(Hospital_ID);
+CREATE INDEX IF NOT EXISTS idx_donation_hosp ON Donation_Records(Hospital_ID);"

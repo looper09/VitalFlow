@@ -2,7 +2,7 @@ from database import get_connection
 
 def test_local_connection():
     # This will call the function from your updated database.py
-    conn = get_connection()
+    conn = get_db_connection()
     
     if conn:
         try:
