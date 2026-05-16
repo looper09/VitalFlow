@@ -2,7 +2,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-3-003B57?logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Ready-003B57)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
 
 VitalFlow is a healthcare logistics and blood bank management system. It's built to help a network of hospitals keep track of their medical supplies, manage regional blood donations, and handle emergency resource transfers safely and efficiently.
@@ -19,7 +19,7 @@ VitalFlow is a healthcare logistics and blood bank management system. It's built
 
 ## 🏗️ Architecture & Database Integrity
 
-The backend is powered by a reliable SQLite database designed to keep data accurate and prevent user errors:
+The backend now uses PostgreSQL throughout the repository. If you set the same `DB_URL` in your local `.env` file and in Streamlit secrets, both local and live deployments update the same Supabase database:
 * **Strict Data Rules:** The database is set up to reject invalid data, like negative inventory numbers or non-standard blood types.
 * **Linked Records:** The database enforces relationships between tables, so deleting or updating a record safely handles any connected data automatically.
 * **Clean User Interface:** Users select easy-to-read names from dropdown menus instead of dealing with raw database IDs. This makes the app much easier to use while keeping the backend data perfectly organized.
@@ -36,6 +36,15 @@ git clone https://github.com/yourusername/vitalflow.git
 cd vitalflow
 pip install -r requirements.txt
 ```
+
+### 1.1 Configure a Shared Database
+To make local and live runs use the same Supabase database, set the same connection string in both places:
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and set `DB_URL` to your Supabase PostgreSQL URL. In Streamlit Cloud, add the same `DB_URL` value in the app secrets.
 
 ### 2. Initialize the Database
 Build the database tables:

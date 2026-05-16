@@ -1,0 +1,57 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.13, pytest-9.0.3, pluggy-1.6.0 -- /workspaces/VitalFlow/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /workspaces/VitalFlow
+plugins: cov-7.1.0, anyio-4.13.0
+collecting ... collected 42 items
+
+test_models.py::TestPasswordSecurity::test_hash_password_success PASSED  [  2%]
+test_models.py::TestPasswordSecurity::test_hash_password_varies PASSED   [  4%]
+test_models.py::TestPasswordSecurity::test_hash_password_too_short PASSED [  7%]
+test_models.py::TestPasswordSecurity::test_hash_password_empty PASSED    [  9%]
+test_models.py::TestPasswordSecurity::test_verify_password_success PASSED [ 11%]
+test_models.py::TestPasswordSecurity::test_verify_password_failure PASSED [ 14%]
+test_models.py::TestPasswordSecurity::test_verify_password_case_sensitive PASSED [ 16%]
+test_models.py::TestInputValidator::test_validate_username_valid PASSED  [ 19%]
+test_models.py::TestInputValidator::test_validate_username_too_short PASSED [ 21%]
+test_models.py::TestInputValidator::test_validate_username_too_long PASSED [ 23%]
+test_models.py::TestInputValidator::test_validate_username_invalid_chars PASSED [ 26%]
+test_models.py::TestInputValidator::test_validate_password_valid PASSED  [ 28%]
+test_models.py::TestInputValidator::test_validate_password_too_short PASSED [ 30%]
+test_models.py::TestInputValidator::test_validate_blood_type_valid PASSED [ 33%]
+test_models.py::TestInputValidator::test_validate_blood_type_invalid PASSED [ 35%]
+test_models.py::TestInputValidator::test_validate_integer_valid PASSED   [ 38%]
+test_models.py::TestInputValidator::test_validate_integer_below_min PASSED [ 40%]
+test_models.py::TestInputValidator::test_validate_integer_above_max PASSED [ 42%]
+test_models.py::TestInputValidator::test_validate_integer_non_numeric PASSED [ 45%]
+test_models.py::TestInputValidator::test_validate_text_valid PASSED      [ 47%]
+test_models.py::TestInputValidator::test_validate_text_too_short PASSED  [ 50%]
+test_models.py::TestInputValidator::test_validate_text_too_long PASSED   [ 52%]
+test_models.py::TestInputValidator::test_validate_text_sql_injection_pattern PASSED [ 54%]
+test_models.py::TestInputValidator::test_validate_text_empty_not_allowed PASSED [ 57%]
+test_models.py::TestInputValidator::test_validate_text_empty_allowed PASSED [ 59%]
+test_models.py::TestInputValidator::test_validate_transfer_status_valid PASSED [ 61%]
+test_models.py::TestInputValidator::test_validate_transfer_status_invalid PASSED [ 64%]
+test_models.py::TestInputValidator::test_sanitize_string_removes_null_bytes PASSED [ 66%]
+test_models.py::TestInputValidator::test_sanitize_string_normalizes_whitespace PASSED [ 69%]
+test_models.py::TestInputValidator::test_sanitize_string_truncates_length PASSED [ 71%]
+test_models.py::TestAuthenticationHelper::test_validate_credentials_both_valid PASSED [ 73%]
+test_models.py::TestAuthenticationHelper::test_validate_credentials_invalid_username PASSED [ 76%]
+test_models.py::TestAuthenticationHelper::test_validate_credentials_invalid_password PASSED [ 78%]
+test_models.py::TestAuthenticationHelper::test_hash_password_for_storage_success PASSED [ 80%]
+test_models.py::TestAuthenticationHelper::test_hash_password_for_storage_invalid PASSED [ 83%]
+test_models.py::TestLogging::test_logger_created PASSED                  [ 85%]
+test_models.py::TestLogging::test_logger_levels PASSED                   [ 88%]
+test_models.py::TestIntegration::test_user_registration_flow PASSED      [ 90%]
+test_models.py::TestIntegration::test_donor_registration_flow PASSED     [ 92%]
+test_models.py::TestIntegration::test_inventory_allocation_flow PASSED   [ 95%]
+test_models.py::TestPerformance::test_password_hashing_performance PASSED [ 97%]
+test_models.py::TestPerformance::test_input_validation_xss_patterns PASSED [100%]
+
+=============================== warnings summary ===============================
+testing/test_automation.py:58
+  /workspaces/VitalFlow/testing/test_automation.py:58: PytestCollectionWarning: cannot collect test class 'TestLogger' because it has a __init__ constructor (from: testing/test_automation.py)
+    class TestLogger:
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 42 passed, 1 warning in 5.77s =========================

@@ -1,0 +1,319 @@
+[2026-05-08 14:50:18] ERROR    [logger_config] Failed to initialize database: PostgreSQL database URL not found. Set DB_URL in .env or Streamlit secrets.
+[2026-05-09 10:43:52] ERROR    [logger_config] Query execution failed: operator does not exist: integer = text
+LINE 11: ...            LEFT JOIN audit_logs al ON s.staff_id = al.staff...
+                                                              ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+Query: 
+                SELECT 
+                    s.staff_id, s.username,
+                    r.role_name as role,
+          ...
+[2026-05-09 10:44:11] ERROR    [logger_config] Query execution failed: operator does not exist: integer = text
+LINE 11: ...            LEFT JOIN audit_logs al ON s.staff_id = al.staff...
+                                                              ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+Query: 
+                SELECT 
+                    s.staff_id, s.username,
+                    r.role_name as role,
+          ...
+[2026-05-09 10:48:26] ERROR    [logger_config] Query execution failed: operator does not exist: integer = text
+LINE 11: ...            LEFT JOIN audit_logs al ON s.staff_id = al.staff...
+                                                              ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+
+Query: 
+                SELECT 
+                    s.staff_id, s.username,
+                    r.role_name as role,
+          ...
+[2026-05-09 11:39:03] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 11:39:25] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 11:40:02] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 11:44:13] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 11:44:28] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 11:44:45] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 11:45:02] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 12:15:37] ERROR    [logger_config] Query execution failed: no results to fetch
+Query: INSERT INTO hospitals (name, location, contact) VALUES (?, ?, ?)...
+[2026-05-09 14:13:45] ERROR    [logger_config] Error applying SQL file schema.sql: relation "staff" does not exist
+
+[2026-05-09 14:25:47] ERROR    [logger_config] Error applying SQL file schema.sql: relation "staff" does not exist
+
+[2026-05-09 14:30:00] ERROR    [logger_config] Error applying SQL file schema.sql: relation "staff" does not exist
+
+[2026-05-13 22:34:57] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 2:                 UPDATE Blood_Bank
+                               ^
+
+Query: 
+                UPDATE Blood_Bank
+                SET status = 'Expired'
+                WHERE status = 'Active' AND ex...
+[2026-05-13 22:34:58] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'...
+[2026-05-13 22:34:59] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'...
+[2026-05-13 22:35:09] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 2:                 UPDATE Blood_Bank
+                               ^
+
+Query: 
+                UPDATE Blood_Bank
+                SET status = 'Expired'
+                WHERE status = 'Active' AND ex...
+[2026-05-13 22:35:09] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'...
+[2026-05-13 22:35:10] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'...
+[2026-05-13 22:35:11] ERROR    [logger_config] Query execution failed: relation "staff" does not exist
+LINE 1: ...id, username, password, role_id, hospital_id FROM Staff WHER...
+                                                             ^
+
+Query: SELECT staff_id, username, password, role_id, hospital_id FROM Staff WHERE username = ?...
+[2026-05-13 22:40:58] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 2:                 UPDATE Blood_Bank
+                               ^
+
+Query: 
+                UPDATE Blood_Bank
+                SET status = 'Expired'
+                WHERE status = 'Active' AND ex...
+[2026-05-13 22:40:58] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'...
+[2026-05-13 22:40:59] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'...
+[2026-05-13 22:52:06] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 2:                 UPDATE Blood_Bank
+                               ^
+
+Query: 
+                UPDATE Blood_Bank
+                SET status = 'Expired'
+                WHERE status = 'Active' AND ex...
+[2026-05-13 22:52:07] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'...
+[2026-05-13 22:52:08] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'...
+[2026-05-13 22:52:26] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 2:                 UPDATE Blood_Bank
+                               ^
+
+Query: 
+                UPDATE Blood_Bank
+                SET status = 'Expired'
+                WHERE status = 'Active' AND ex...
+[2026-05-13 22:52:27] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'...
+[2026-05-13 22:52:27] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'...
+[2026-05-13 22:52:29] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 2:                 UPDATE Blood_Bank
+                               ^
+
+Query: 
+                UPDATE Blood_Bank
+                SET status = 'Expired'
+                WHERE status = 'Active' AND ex...
+[2026-05-13 22:52:30] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Active'...
+[2026-05-13 22:52:30] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 1: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'
+                             ^
+
+Query: SELECT COUNT(*) FROM Blood_Bank WHERE status = 'Expired'...
+[2026-05-13 22:52:32] ERROR    [logger_config] Query execution failed: relation "donors" does not exist
+LINE 1: SELECT donor_id, name, blood_type, contact FROM Donors ORDER...
+                                                        ^
+
+Query: SELECT donor_id, name, blood_type, contact FROM Donors ORDER BY name...
+[2026-05-13 22:52:32] ERROR    [logger_config] Query execution failed: relation "transfer_requests" does not exist
+LINE 3:                 FROM transfer_requests
+                             ^
+
+Query: 
+                SELECT request_id, origin_hospital_id, dest_hospital_id, item_id, quantity
+                FROM transfe...
+[2026-05-13 22:52:33] ERROR    [logger_config] Query execution failed: relation "audit_logs" does not exist
+LINE 3:                 FROM audit_logs
+                             ^
+
+Query: 
+                SELECT log_id, staff_id, action, table_affected, timestamp
+                FROM audit_logs
+            ...
+[2026-05-13 22:52:34] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 9:                 FROM Blood_Bank
+                             ^
+
+Query: 
+                SELECT 
+                    blood_type,
+                    COUNT(*) as unit_count,
+                   ...
+[2026-05-13 22:52:35] ERROR    [logger_config] Query execution failed: relation "inventory_items" does not exist
+LINE 1: ...LECT item_id, item_name, category, unit_type FROM Inventory_...
+                                                             ^
+
+Query: SELECT item_id, item_name, category, unit_type FROM Inventory_Items ORDER BY item_name...
+[2026-05-13 22:52:38] ERROR    [logger_config] Query execution failed: relation "donors" does not exist
+LINE 1: SELECT donor_id, name, blood_type, contact FROM Donors ORDER...
+                                                        ^
+
+Query: SELECT donor_id, name, blood_type, contact FROM Donors ORDER BY name...
+[2026-05-13 22:52:38] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 3:                 FROM Blood_Bank WHERE hospital_id = 1 AND st...
+                             ^
+
+Query: 
+                SELECT blood_id, hospital_id, blood_type, quantity_ml, expiry_date, status
+                FROM Blood_B...
+[2026-05-13 22:52:39] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 9:                 FROM Blood_Bank
+                             ^
+
+Query: 
+                SELECT 
+                    blood_type,
+                    COUNT(*) as unit_count,
+                   ...
+[2026-05-13 22:52:40] ERROR    [logger_config] Query execution failed: relation "donors" does not exist
+LINE 7:                 FROM Donors
+                             ^
+
+Query: 
+                SELECT 
+                    donor_id,
+                    name,
+                    blood_type,
+       ...
+[2026-05-13 22:52:41] ERROR    [logger_config] Query execution failed: relation "donors" does not exist
+LINE 1: SELECT donor_id, name, blood_type, contact FROM Donors ORDER...
+                                                        ^
+
+Query: SELECT donor_id, name, blood_type, contact FROM Donors ORDER BY name...
+[2026-05-13 22:52:43] ERROR    [logger_config] Query execution failed: relation "inventory_items" does not exist
+LINE 1: ...LECT item_id, item_name, category, unit_type FROM Inventory_...
+                                                             ^
+
+Query: SELECT item_id, item_name, category, unit_type FROM Inventory_Items ORDER BY item_name...
+[2026-05-13 22:52:44] ERROR    [logger_config] Query execution failed: relation "transfer_requests" does not exist
+LINE 3:                 FROM transfer_requests
+                             ^
+
+Query: 
+                SELECT request_id, origin_hospital_id, dest_hospital_id, item_id, quantity
+                FROM transfe...
+[2026-05-13 22:52:45] ERROR    [logger_config] Query execution failed: relation "audit_logs" does not exist
+LINE 3:                 FROM audit_logs
+                             ^
+
+Query: 
+                SELECT log_id, staff_id, action, table_affected, timestamp
+                FROM audit_logs
+            ...
+[2026-05-13 22:52:46] ERROR    [logger_config] Query execution failed: relation "audit_logs" does not exist
+LINE 11:                 LEFT JOIN audit_logs al ON s.staff_id = al.s...
+                                   ^
+
+Query: 
+                SELECT 
+                    s.staff_id, s.username,
+                    r.role_name as role,
+          ...
+[2026-05-13 22:52:47] ERROR    [logger_config] Query execution failed: relation "hospital_inventory" does not exist
+LINE 9:                 FROM hospital_inventory hi
+                             ^
+
+Query: 
+                SELECT
+                    hi.inventory_id,
+                    h.name as hospital_name,
+              ...
+[2026-05-13 22:52:48] ERROR    [logger_config] Query execution failed: relation "donors" does not exist
+LINE 7:                 FROM donors d
+                             ^
+
+Query: 
+                SELECT 
+                    d.donor_id, d.name, d.blood_type,
+                    COUNT(dr.donation_id)...
+[2026-05-13 22:52:49] ERROR    [logger_config] Query execution failed: relation "transfer_status" does not exist
+LINE 10:                 FROM transfer_status ts
+                              ^
+
+Query: 
+                SELECT
+                    ts.status_id,
+                    h1.name as origin,
+                    h2....
+[2026-05-13 22:52:49] ERROR    [logger_config] Query execution failed: relation "audit_logs" does not exist
+LINE 8:                 FROM audit_logs al
+                             ^
+
+Query: 
+                SELECT 
+                    al.log_id,
+                    al.staff_id,
+                    al.action,
+...
+[2026-05-13 22:52:50] ERROR    [logger_config] Query execution failed: relation "blood_bank" does not exist
+LINE 9:                 FROM Blood_Bank
+                             ^
+
+Query: 
+                SELECT 
+                    blood_type,
+                    COUNT(*) as unit_count,
+                   ...
+[2026-05-13 22:52:51] ERROR    [logger_config] Query execution failed: relation "transfer_requests" does not exist
+LINE 10:                 FROM transfer_requests tr
+                              ^
+
+Query: 
+                SELECT 
+                    tr.request_id,
+                    h1.name as origin_hospital,
+            ...
