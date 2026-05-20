@@ -5,16 +5,16 @@ Performs all GUI operations and creates detailed test documentation
 """
 
 import sys
-import os
 import json
 from datetime import datetime
+from pathlib import Path
 
-sys.path.insert(0, '/workspaces/VitalFlow')
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 import streamlit as st
 import pandas as pd
 import models_compat as models
-from pathlib import Path
 
 # ==========================================
 # PAGE CONFIGURATION
@@ -468,7 +468,7 @@ with tab_results:
     
     with col1:
         if st.button("📋 Export as JSON"):
-            export_path = "/workspaces/VitalFlow/testing/test_results.json"
+            export_path = PROJECT_ROOT / "testing" / "test_results.json"
             test_tracker.export_json(export_path)
             st.success(f"Results exported to {export_path}")
     

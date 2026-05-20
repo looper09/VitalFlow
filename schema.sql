@@ -5,13 +5,13 @@
 -- 1. Roles
 CREATE TABLE IF NOT EXISTS public.roles (
     Role_ID SERIAL PRIMARY KEY,
-    Role_Name TEXT NOT NULL
+    Role_Name TEXT NOT NULL UNIQUE
 );
 
 -- 2. Hospitals
 CREATE TABLE IF NOT EXISTS public.hospitals (
     Hospital_ID SERIAL PRIMARY KEY,
-    Name TEXT NOT NULL,
+    Name TEXT NOT NULL UNIQUE,
     Location TEXT NOT NULL,
     Contact TEXT NOT NULL
 );
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS public.hospitals (
 CREATE TABLE IF NOT EXISTS public.staff (
     Staff_ID SERIAL PRIMARY KEY,
     Username TEXT UNIQUE NOT NULL,
-    Password TEXT NOT NULL,
+    Password TEXT NOT NULL CHECK (Password ~ '^\$2[aby]\$\d{2}\$[./A-Za-z0-9]{53}$'),
     Role_ID INTEGER NOT NULL,
     Hospital_ID INTEGER,
     Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS public.transfer_requests (
 -- 11. Transfer Status History
 CREATE TABLE IF NOT EXISTS public.transfer_status (
     Status_ID SERIAL PRIMARY KEY,
-    Request_ID INTEGER,
+    Request_ID INTEGER NOT NULL,
     Status TEXT NOT NULL CHECK(Status IN ('Pending', 'In Transit', 'Delivered', 'Cancelled')),
     Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_stat_req FOREIGN KEY (Request_ID) REFERENCES public.transfer_requests(Request_ID) ON DELETE CASCADE
