@@ -253,7 +253,7 @@ def require_login():
 						is_valid = PasswordSecurity.verify_password(password_input, stored_password) if is_bcrypt else False
 
 						if not is_bcrypt:
-							logger.warning("Blocked login for legacy password format account")
+							logger.warning("Blocked invalid login attempt")
 							st.error("Authentication failed. Invalid credentials.")
 							is_valid = False
 
