@@ -99,7 +99,7 @@ SQL files:
 
 Primary project fallback themes:
 - **Auth fallback**: legacy plaintext password migration path in runtime login.
-- **Error handling fallback**: broad catch blocks returning generic defaults (`[]`, `None`, `False`) across repositories.
+- **Error handling fallback**: broad catch blocks returning generic defaults (`[]`, `None`, `False`) across the repository.
 - **Environment fallback assumptions**: test scripts assume a fixed filesystem root.
 - **Schema fallback assumptions**: app-level guarantees (password format, strict linkage) are not fully enforced at DB level.
 - **Operational fallback risk**: one broken seeding module (`seed_clean.py`) blocks cold-start data seeding path.
