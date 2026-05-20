@@ -254,7 +254,7 @@ def require_login():
 
 						if not is_bcrypt:
 							logger.warning("Blocked login for legacy password format account")
-							st.error("Authentication Failed. Invalid credentials.")
+							st.error("Authentication failed. Invalid credentials.")
 							is_valid = False
 
 						if is_valid:

@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS public.hospitals (
 CREATE TABLE IF NOT EXISTS public.staff (
     Staff_ID SERIAL PRIMARY KEY,
     Username TEXT UNIQUE NOT NULL,
+    -- Ensure password is stored as a bcrypt hash prefix ($2a$, $2b$, $2x$, $2y$)
     Password TEXT NOT NULL CHECK (Password ~ '^\$2[abxy]?\$.*'),
     Role_ID INTEGER NOT NULL,
     Hospital_ID INTEGER,
