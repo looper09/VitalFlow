@@ -469,7 +469,7 @@ with tab_results:
     with col1:
         if st.button("📋 Export as JSON"):
             export_path = PROJECT_ROOT / "testing" / "test_results.json"
-            test_tracker.export_json(export_path)
+            test_tracker.export_json(str(export_path))
             st.success(f"Results exported to {export_path}")
     
     with col2:
