@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS public.hospitals (
 CREATE TABLE IF NOT EXISTS public.staff (
     Staff_ID SERIAL PRIMARY KEY,
     Username TEXT UNIQUE NOT NULL,
-    Password TEXT NOT NULL CHECK (Password LIKE '$2%'),
+    Password TEXT NOT NULL CHECK (Password ~ '^\$2[abxy]?\$.*'),
     Role_ID INTEGER NOT NULL,
     Hospital_ID INTEGER,
     Created_At TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
