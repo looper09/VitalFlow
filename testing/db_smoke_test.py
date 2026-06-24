@@ -7,8 +7,10 @@ Run with: python testing/db_smoke_test.py
 from datetime import datetime
 import time
 import sys
+from pathlib import Path
 
-sys.path.insert(0, '/workspaces/VitalFlow')
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 import models_compat as models
 

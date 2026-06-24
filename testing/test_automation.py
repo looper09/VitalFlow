@@ -5,13 +5,13 @@ Tests all operations and captures screenshots for verification
 
 import sys
 import time
-import os
 import subprocess
 from pathlib import Path
 from datetime import datetime
 
 # Add project to path
-sys.path.insert(0, '/workspaces/VitalFlow')
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 # Try to import Selenium, install if needed
 try:
@@ -37,13 +37,13 @@ from security import PasswordSecurity
 # CONFIGURATION
 # ==========================================
 
-SCREENSHOTS_DIR = "/workspaces/VitalFlow/testing/screenshots"
-TEST_REPORT = "/workspaces/VitalFlow/testing/TEST_REPORT.md"
+SCREENSHOTS_DIR = PROJECT_ROOT / "testing" / "screenshots"
+TEST_REPORT = PROJECT_ROOT / "testing" / "TEST_REPORT.md"
 STREAMLIT_PORT = 8501
 STREAMLIT_URL = f"http://localhost:{STREAMLIT_PORT}"
 
 # Create directories
-Path(SCREENSHOTS_DIR).mkdir(parents=True, exist_ok=True)
+SCREENSHOTS_DIR.mkdir(parents=True, exist_ok=True)
 
 # Test credentials
 TEST_ADMIN = "asad_admin"
@@ -82,8 +82,8 @@ class AutomationLogger:
         """Take and save screenshot"""
         self.screenshot_counter += 1
         filename = f"{self.screenshot_counter:03d}_{test_name.replace(' ', '_')}.png"
-        filepath = os.path.join(SCREENSHOTS_DIR, filename)
-        driver.save_screenshot(filepath)
+        filepath = SCREENSHOTS_DIR / filename
+        driver.save_screenshot(str(filepath))
         self.tests.append(f"   📸 Screenshot: {filename}")
         print(f"   📸 Screenshot saved: {filename}")
         return filename

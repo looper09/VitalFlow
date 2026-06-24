@@ -1,1 +1,4 @@
 .streamlit/
+__pycache__/
+testing/__pycache__/
+*.pyc

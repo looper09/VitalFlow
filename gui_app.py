@@ -252,9 +252,10 @@ def require_login():
 						is_bcrypt = stored_password.startswith("$2")
 						is_valid = PasswordSecurity.verify_password(password_input, stored_password) if is_bcrypt else False
 
-						if not is_bcrypt and stored_password == password_input:
-							migrate_ok, _ = models.update_staff(user_record[0], password=password_input, updated_by="System")
-							is_valid = migrate_ok
+						if not is_bcrypt:
+							logger.warning("Blocked invalid login attempt")
+							st.error("Authentication failed. Invalid credentials.")
+							is_valid = False
 
 						if is_valid:
 							st.session_state.logged_in = True
