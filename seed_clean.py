@@ -109,7 +109,7 @@ def seed_database() -> None:
             for i_id in range(1, len(INVENTORY_ITEMS) + 1):
                 qty = random.randint(5, 45)
                 expiry = (datetime.now() + timedelta(days=random.randint(30, 365))).date().isoformat()
-                    _exec(cursor, "INSERT INTO public.hospital_inventory (hospital_id, item_id, quantity, expiry_date) VALUES (?, ?, ?, ?)",
+                _exec(cursor, "INSERT INTO public.hospital_inventory (hospital_id, item_id, quantity, expiry_date) VALUES (?, ?, ?, ?)",
                       (h_id, i_id, qty, expiry))
 
         # 6. Seed Donors & Historical Records
@@ -129,7 +129,7 @@ def seed_database() -> None:
                 qty = random.randint(300, 950)
                 rec_date = datetime.now().date().isoformat()
                 exp_date = (datetime.now() + timedelta(days=42)).date().isoformat()
-                    _exec(cursor, "INSERT INTO public.blood_bank (hospital_id, blood_type, quantity_ml, received_date, expiry_date, status) VALUES (?, ?, ?, ?, ?, 'Active')",
+                _exec(cursor, "INSERT INTO public.blood_bank (hospital_id, blood_type, quantity_ml, received_date, expiry_date, status) VALUES (?, ?, ?, ?, ?, 'Active')",
                       (h_id, b_type, qty, rec_date, exp_date))
 
         connection.commit()
